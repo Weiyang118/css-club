@@ -1,0 +1,156 @@
+<canvas id="particleCanvas"></canvas>
+
+<div class="slider-container">
+  <div class="value-bubble" id="bubble">50</div>
+  <input type="range" id="slider" min="0" max="100" value="50">
+</div>
+
+<style>
+body {
+  background: #0b0c10;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#particleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.slider-container {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 80%;
+  max-width: 500px;
+  z-index: 2;
+}
+
+input[type=range] {
+  width: 100%;
+  height: 16px;
+  appearance: none;
+  background: linear-gradient(90deg, gold, orange);
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 0 15px gold;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px gold, 0 0 30px orange;
+  transition: transform 0.2s ease;
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.value-bubble {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: gold;
+  color: black;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 10px gold;
+  pointer-events: none;
+}
+</style>
+
+<script>
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.size = Math.random() * 4 + 2;
+    this.speedX = (Math.random() - 0.5) * 6;
+    this.speedY = (Math.random() - 0.5) * 6;
+    this.alpha = 1;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.alpha -= 0.02;
+  }
+
+  draw() {
+    ctx.fillStyle = `rgba(255, 215, 0, ${this.alpha})`; // 金色粒子
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.update();
+    p.draw();
+    if (p.alpha <= 0) {
+      particles.splice(i, 1); // 移除透明的粒子
+    }
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+function emitParticles(x, y) {
+  for (let i = 0; i < 20; i++) {
+    particles.push(new Particle(x, y));
+  }
+}
+
+// Slider logic
+const slider = document.getElementById("slider");
+const bubble = document.getElementById("bubble");
+
+function setBubble(slider, bubble) {
+  const val = slider.value;
+  const min = slider.min ? slider.min : 0;
+  const max = slider.max ? slider.max : 100;
+  const newVal = Number(((val - min) * 100) / (max - min));
+  bubble.innerHTML = val;
+  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+
+  // 粒子坐标
+  const rect = slider.getBoundingClientRect();
+  const x = rect.left + (rect.width * newVal / 100);
+  const y = rect.top + rect.height / 2;
+  emitParticles(x, y);
+}
+
+slider.addEventListener("input", () => {
+  setBubble(slider, bubble);
+});
+
+window.addEventListener("load", () => {
+  setBubble(slider, bubble);
+});
+</script>

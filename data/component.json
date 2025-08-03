@@ -1,0 +1,43 @@
+{
+  "components": [
+    {
+      "id": "Round Buttons",
+      "name": "Round Buttons",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "popular", "stable"],
+      "status": "stable",
+      "screenshot": "./assets/image/Screenshot (400).png",
+      "tags": ["Button", "Basic"],
+      "meta": {
+        "views": "15",
+        "likes": 1
+      }
+    },
+    {
+      "id": "effects-slider-particles",
+      "name": "Effects Slider Particles",
+      "icon": "fas fa-icons",
+      "categories": ["Slider", "popular", "stable"],
+      "status": "Stable",
+      "screenshot": "Screenshot (401).png",
+      "tags": ["Slider", "Interactive"],
+      "meta": {
+        "views": "12",
+        "likes": 2
+      }
+    },
+    {
+      "id": "buttons-loading",
+      "name": "加载按钮",
+      "icon": "fas fa-spinner",
+      "categories": ["buttons", "popular", "stable"],
+      "status": "稳定",
+      "screenshot": "Screenshot (402).png",
+      "tags": ["按钮", "加载", "交互"],
+      "meta": {
+        "views": "600",
+        "likes": 65
+      }
+    }
+  ]
+}
