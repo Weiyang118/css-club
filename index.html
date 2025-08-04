@@ -2,8 +2,22 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="./assets/image/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS组件设计库</title>
+    <!-- Basic SEO -->
+    <meta name="description" content="CSS Club is an open-source library of modern, responsive CSS UI components. Explore buttons, cards, layouts, animations, and more. Copy, learn, and contribute.">
+    <meta name="keywords" content="CSS components, UI library, CSS demo, open source, responsive design, CSS animation, Css buttons, Css cards, Css grid layout,Css Slider, Css modal, Css dropdown, Css navigation, Css forms, Css inputs, Css checkbox, Css radio, Css switch, Css progress bar, Css spinner, Css badge, Css sidebar, Css carousel, Css pagination, Css emoji, Css feedbacks, Css layer, Css logo, Css creative, Css design, Css club, The Best Css Design, Top Css Button Deisgn, Css Button Design">
+    <meta name="author" content="CSS Club Team">
+
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="CSS Club | Open Source CSS UI Components">
+    <meta property="og:description" content="Discover reusable and responsive CSS UI elements: buttons, cards, layouts, animations and more. Free, open-source, and developer-friendly.">
+    <meta property="og:image" content="https://css-club.com/assets/image/logo.png"> <!-- Replace with your actual image URL -->
+    <meta property="og:url" content="https://css-club.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CSS Club">
+
+    <title>Open Source Css Club</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -599,7 +613,7 @@
             <div class="sidebar-logo">
                 <img src="./assets/image/logo.png" width='48' height='48' alt="">
             </div>
-            <h4 class="sidebar-title">Design System</h4>
+            <h4 class="sidebar-title">Css Club</h4>
         </div>
         
         <div class="nav-section">
@@ -799,7 +813,7 @@
     <!-- 头部 -->
     <header class="main-header">
         <div class="search-container">
-            <input type="text" class="form-control search-input" id="searchInput" placeholder="搜索组件、样式或功能...">
+            <input type="text" class="form-control search-input" id="searchInput" placeholder="Search Components..." ">
             <button class="search-btn" type="button">
                 <i class="fas fa-search"></i>
             </button>
@@ -842,163 +856,6 @@
                     <div class="component-meta">
                         <span><i class="fas fa-download"></i> 1.2k 下载</span>
                         <span><i class="fas fa-heart"></i> 89 喜欢</span>
-                    </div>
-                </div>
-
-                输入框组件 -->
-                <div class="component-card" data-category="forms inputs popular stable" onclick="showComponentDetail('forms-input')">
-                    <div class="component-title">
-                        <div class="component-title-left">
-                            <i class="fas fa-edit"></i>
-                            输入框
-                        </div>
-                        <span class="component-status">稳定</span>
-                    </div>
-                    <div class="component-demo">
-                        <div style="width: 100%;">
-                            <input type="text" class="form-control mb-3" placeholder="普通输入框">
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="带图标的输入框">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-tags">
-                        <span class="component-tag">表单</span>
-                        <span class="component-tag">输入</span>
-                        <span class="component-tag">文本</span>
-                    </div>
-                    <div class="component-meta">
-                        <span><i class="fas fa-download"></i> 956 下载</span>
-                        <span><i class="fas fa-heart"></i> 67 喜欢</span>
-                    </div>
-                </div>
-
-                <!-- 单选框组件 -->
-                <div class="component-card" data-category="forms stable" onclick="showComponentDetail('forms-radio')">
-                    <div class="component-title">
-                        <div class="component-title-left">
-                            <i class="fas fa-dot-circle"></i>
-                            单选框
-                        </div>
-                        <span class="component-status">稳定</span>
-                    </div>
-                    <div class="component-demo">
-                        <div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="radioExample" id="radio1" checked>
-                                <label class="form-check-label" for="radio1">选项 1</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="radioExample" id="radio2">
-                                <label class="form-check-label" for="radio2">选项 2</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioExample" id="radio3">
-                                <label class="form-check-label" for="radio3">选项 3</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-tags">
-                        <span class="component-tag">单选</span>
-                        <span class="component-tag">表单</span>
-                        <span class="component-tag">选择</span>
-                    </div>
-                    <div class="component-meta">
-                        <span><i class="fas fa-download"></i> 734 下载</span>
-                        <span><i class="fas fa-heart"></i> 45 喜欢</span>
-                    </div>
-                </div>
-
-                <!-- 卡片组件 -->
-                <div class="component-card" data-category="cards popular stable" onclick="showComponentDetail('cards-basic')">
-                    <div class="component-title">
-                        <div class="component-title-left">
-                            <i class="fas fa-id-card"></i>
-                            卡片
-                        </div>
-                        <span class="component-status">稳定</span>
-                    </div>
-                    <div class="component-demo">
-                        <div class="card" style="width: 250px;">
-                            <div class="card-body">
-                                <h6 class="card-title">卡片标题</h6>
-                                <p class="card-text small">这是一个示例卡片的内容描述，展示卡片的基本样式。</p>
-                                <a href="#" class="btn btn-primary btn-sm">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-tags">
-                        <span class="component-tag">卡片</span>
-                        <span class="component-tag">容器</span>
-                        <span class="component-tag">布局</span>
-                    </div>
-                    <div class="component-meta">
-                        <span><i class="fas fa-download"></i> 1.5k 下载</span>
-                        <span><i class="fas fa-heart"></i> 112 喜欢</span>
-                    </div>
-                </div>
-
-                <!-- 更多组件... -->
-                <div class="component-card" data-category="feedback stable" onclick="showComponentDetail('feedback-alerts')">
-                    <div class="component-title">
-                        <div class="component-title-left">
-                            <i class="fas fa-bell"></i>
-                            提示框
-                        </div>
-                        <span class="component-status">稳定</span>
-                    </div>
-                    <div class="component-demo">
-                        <div style="width: 100%;">
-                            <div class="alert alert-success py-2 mb-2" role="alert">
-                                <small><i class="fas fa-check-circle me-2"></i>成功提示信息</small>
-                            </div>
-                            <div class="alert alert-warning py-2 mb-0" role="alert">
-                                <small><i class="fas fa-exclamation-triangle me-2"></i>警告提示信息</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-tags">
-                        <span class="component-tag">提示</span>
-                        <span class="component-tag">反馈</span>
-                        <span class="component-tag">消息</span>
-                    </div>
-                    <div class="component-meta">
-                        <span><i class="fas fa-download"></i> 892 下载</span>
-                        <span><i class="fas fa-heart"></i> 76 喜欢</span>
-                    </div>
-                </div>
-
-                <!-- 导航组件 -->
-                <div class="component-card" data-category="navigation popular stable" onclick="showComponentDetail('navigation-tabs')">
-                    <div class="component-title">
-                        <div class="component-title-left">
-                            <i class="fas fa-compass"></i>
-                            标签导航
-                        </div>
-                        <span class="component-status">稳定</span>
-                    </div>
-                    <div class="component-demo">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab">首页</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">个人</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">联系</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="component-tags">
-                        <span class="component-tag">导航</span>
-                        <span class="component-tag">标签</span>
-                        <span class="component-tag">切换</span>
-                    </div>
-                    <div class="component-meta">
-                        <span><i class="fas fa-download"></i> 678 下载</span>
-                        <span><i class="fas fa-heart"></i> 54 喜欢</span>
                     </div>
                 </div> -->
             </div>

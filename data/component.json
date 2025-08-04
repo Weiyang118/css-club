@@ -6,7 +6,7 @@
       "icon": "fas fa-hand-pointer",
       "categories": ["buttons", "popular", "stable"],
       "status": "stable",
-      "screenshot": "./assets/image/Screenshot (400).png",
+      "screenshot": "./assets/image/round-button.png",
       "tags": ["Button", "Basic"],
       "meta": {
         "views": "15",
@@ -17,9 +17,9 @@
       "id": "effects-slider-particles",
       "name": "Effects Slider Particles",
       "icon": "fas fa-icons",
-      "categories": ["Slider", "popular", "stable"],
+      "categories": ["Slider", "popular", "beta"],
       "status": "Stable",
-      "screenshot": "Screenshot (401).png",
+      "screenshot": "./assets/image/particle-slider.png",
       "tags": ["Slider", "Interactive"],
       "meta": {
         "views": "12",
@@ -27,16 +27,16 @@
       }
     },
     {
-      "id": "buttons-loading",
-      "name": "加载按钮",
-      "icon": "fas fa-spinner",
-      "categories": ["buttons", "popular", "stable"],
-      "status": "稳定",
-      "screenshot": "Screenshot (402).png",
+      "id": "liquid-button",
+      "name": "Liquid Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "creative", "beta"],
+      "status": "Beta",
+      "screenshot": "./assets/image/liquid-button.png",
       "tags": ["按钮", "加载", "交互"],
       "meta": {
-        "views": "600",
-        "likes": 65
+        "views": "104",
+        "likes": 20
       }
     }
   ]

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Button</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #04364f 0%, #0b60a9 50%, #062d63 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-liquid {
+            position: relative;
+            width: 200px;
+            height: 60px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-liquid canvas {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            pointer-events: none;
+        }
+
+        .btn-liquid span {
+            position: relative;
+            z-index: 20;
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+
+        .droplet {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, #00d4ff, #007aff);
+            border-radius: 50% 50% 50% 0;
+            pointer-events: none;
+            z-index: 1;
+            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes dropfall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn-liquid" id="liquidBtn">
+            <span>Liquid Button</span>
+        </button>
+    </div>
+
+    <script>
+        let pointsA = [];
+        let pointsB = [];
+        let canvas = null;
+        let context = null;
+        let button = null;
+        let buttonRect = null;
+        
+        const points = 40;
+        const viscosity = 15;
+        const mouseDist = 80;
+        const damping = 0.08;
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let relMouseX = 0;
+        let relMouseY = 0;
+        let mouseLastX = 0;
+        let mouseLastY = 0;
+        let mouseDirectionX = 0;
+        let mouseDirectionY = 0;
+        let mouseSpeedX = 0;
+        let mouseSpeedY = 0;
+
+        function mouseDirection(e) {
+            if (mouseX < e.pageX) mouseDirectionX = 1;
+            else if (mouseX > e.pageX) mouseDirectionX = -1;
+            else mouseDirectionX = 0;
+
+            if (mouseY < e.pageY) mouseDirectionY = 1;
+            else if (mouseY > e.pageY) mouseDirectionY = -1;
+            else mouseDirectionY = 0;
+
+            mouseX = e.pageX;
+            mouseY = e.pageY;
+
+            if (buttonRect) {
+                relMouseX = mouseX - buttonRect.left + 50;
+                relMouseY = mouseY - buttonRect.top + 50;
+            }
+        }
+
+        function mouseSpeed() {
+            mouseSpeedX = mouseX - mouseLastX;
+            mouseSpeedY = mouseY - mouseLastY;
+            mouseLastX = mouseX;
+            mouseLastY = mouseY;
+            setTimeout(mouseSpeed, 50);
+        }
+
+        function Point(x, y, level) {
+            this.x = this.ix = 50 + x;
+            this.y = this.iy = 50 + y;
+            this.vx = 0;
+            this.vy = 0;
+            this.level = level;
+        }
+
+        Point.prototype.move = function() {
+            this.vx += (this.ix - this.x) / (viscosity * this.level);
+            this.vy += (this.iy - this.y) / (viscosity * this.level);
+
+            const dx = this.ix - relMouseX;
+            const dy = this.iy - relMouseY;
+            const relDist = Math.max(0, 1 - Math.sqrt((dx * dx) + (dy * dy)) / mouseDist);
+
+            if ((mouseDirectionX > 0 && relMouseX > this.x) || (mouseDirectionX < 0 && relMouseX < this.x)) {
+                if (relDist > 0) {
+                    this.vx += (mouseSpeedX / 3) * relDist;
+                }
+            }
+            this.vx *= (1 - damping);
+            this.x += this.vx;
+
+            if ((mouseDirectionY > 0 && relMouseY > this.y) || (mouseDirectionY < 0 && relMouseY < this.y)) {
+                if (relDist > 0) {
+                    this.vy += (mouseSpeedY / 3) * relDist;
+                }
+            }
+            this.vy *= (1 - damping);
+            this.y += this.vy;
+
+            const buttonWidth = 250;
+            const buttonHeight = 60;
+            const cornerRadius = buttonHeight / 2;
+            const margin = 20;
+
+            if (this.iy <= 5) {
+                this.y = Math.max(this.y, this.iy - margin);
+                this.y = Math.min(this.y, buttonHeight - margin);
+            } else if (this.iy >= buttonHeight - 5) {
+                this.y = Math.min(this.y, this.iy + margin);
+                this.y = Math.max(this.y, margin);
+            } else if (this.ix <= cornerRadius + 5) {
+                this.x = Math.max(this.x, this.ix - margin);
+                this.x = Math.min(this.x, buttonWidth - margin);
+            } else if (this.ix >= buttonWidth - cornerRadius - 5) {
+                this.x = Math.min(this.x, this.ix + margin);
+                this.x = Math.max(this.x, margin);
+            }
+
+            this.x = Math.max(5, Math.min(this.x, buttonWidth + 45));
+            this.y = Math.max(5, Math.min(this.y, buttonHeight + 45));
+        };
+
+        function addPoints(x, y) {
+            pointsA.push(new Point(x, y, 1));
+            pointsB.push(new Point(x, y, 1.5));
+        }
+
+        function initButton() {
+            button = document.getElementById('liquidBtn');
+            
+            if (!button) {
+                console.error('按钮元素未找到');
+                return;
+            }
+            
+            const buttonWidth = 200;
+            const buttonHeight = 60;
+            
+            canvas = document.createElement('canvas');
+            canvas.width = buttonWidth + 100;
+            canvas.height = buttonHeight + 100;
+            context = canvas.getContext('2d');
+            button.appendChild(canvas);
+
+            const cornerRadius = buttonHeight / 2;
+            
+            const topPoints = Math.floor(points * 0.3);
+            const rightPoints = Math.floor(points * 0.2);
+            const bottomPoints = Math.floor(points * 0.3);
+            const leftPoints = points - topPoints - rightPoints - bottomPoints;
+            
+            const straightWidth = buttonWidth - buttonHeight;
+            for (let i = 0; i < topPoints; i++) {
+                const x = cornerRadius + (straightWidth * i) / (topPoints - 1);
+                addPoints(x, 0);
+            }
+            
+            for (let i = 0; i < rightPoints; i++) {
+                const angle = -Math.PI / 2 + (Math.PI * i) / (rightPoints - 1);
+                const x = buttonWidth - cornerRadius + Math.cos(angle) * cornerRadius;
+                const y = cornerRadius + Math.sin(angle) * cornerRadius;
+                addPoints(x, y);
+            }
+            
+            for (let i = 0; i < bottomPoints; i++) {
+                const x = buttonWidth - cornerRadius - (straightWidth * i) / (bottomPoints - 1);
+                addPoints(x, buttonHeight);
+            }
+            
+            for (let i = 0; i < leftPoints; i++) {
+                const angle = Math.PI / 2 + (Math.PI * i) / (leftPoints - 1);
+                const x = cornerRadius + Math.cos(angle) * cornerRadius;
+                const y = cornerRadius + Math.sin(angle) * cornerRadius;
+                addPoints(x, y);
+            }
+
+            updateButtonRect();
+            
+            renderCanvas();
+        }
+
+        function updateButtonRect() {
+            if (button) {
+                buttonRect = button.getBoundingClientRect();
+            }
+        }
+
+        function renderCanvas() {
+            requestAnimationFrame(renderCanvas);
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < pointsA.length; i++) {
+                pointsA[i].move();
+                pointsB[i].move();
+            }
+            const gradientX = Math.max(0, Math.min(relMouseX, canvas.width));
+            const gradientY = Math.max(0, Math.min(relMouseY, canvas.height));
+            
+            const gradient = context.createRadialGradient(
+                gradientX, gradientY, 0,
+                gradientX, gradientY, 150
+            );
+            gradient.addColorStop(0, '#00d4ff');
+            gradient.addColorStop(1, '#007aff');
+
+            const groups = [pointsA, pointsB];
+            
+            for (let j = 0; j < groups.length; j++) {
+                const points = groups[j];
+                
+                if (j === 0) {
+                    context.fillStyle = 'rgba(0, 212, 255, 0.8)';
+                } else {
+                    context.fillStyle = gradient;
+                }
+
+                context.beginPath();
+                
+                if (points.length > 0) {
+                    context.moveTo(points[0].x, points[0].y);
+                    
+                    for (let i = 0; i < points.length; i++) {
+                        const current = points[i];
+                        const next = points[(i + 1) % points.length];
+                        const nextNext = points[(i + 2) % points.length];
+                        
+                        const cp1x = current.x + (next.x - points[(i - 1 + points.length) % points.length].x) * 0.1;
+                        const cp1y = current.y + (next.y - points[(i - 1 + points.length) % points.length].y) * 0.1;
+                        const cp2x = next.x - (nextNext.x - current.x) * 0.1;
+                        const cp2y = next.y - (nextNext.y - current.y) * 0.1;
+                        
+                        context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, next.x, next.y);
+                    }
+                }
+                
+                context.closePath();
+                context.fill();
+                
+                if (j === 1) {
+                    context.shadowColor = '#00d4ff';
+                    context.shadowBlur = 20;
+                    context.fill();
+                    context.shadowBlur = 0;
+                }
+            }
+        }
+
+        function createDroplets(startX, startY) {
+            const dropletCount = Math.random() * 4 + 2;
+            
+            for (let i = 0; i < dropletCount; i++) {
+                setTimeout(() => {
+                    const droplet = document.createElement('div');
+                    droplet.className = 'droplet';
+                    
+                    const offsetX = (Math.random() - 0.5) * 40;
+                    const offsetY = (Math.random() - 0.5) * 20;
+                    
+                    droplet.style.left = startX + offsetX + 'px';
+                    droplet.style.top = startY + offsetY + 'px';
+                    
+                    const size = Math.random() * 4 + 4;
+                    droplet.style.width = droplet.style.height = size + 'px';
+                    
+                    const fallDuration = Math.random() * 2 + 2;
+                    droplet.style.animation = `dropfall ${fallDuration}s ease-in forwards`;
+                    
+                    document.body.appendChild(droplet);
+                    
+                    setTimeout(() => {
+                        droplet.remove();
+                    }, fallDuration * 1000);
+                }, i * 100);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            mouseSpeed();
+            initButton();
+            
+            document.addEventListener('mousemove', mouseDirection);
+            window.addEventListener('resize', updateButtonRect);
+            
+            if (button) {
+                button.addEventListener('click', (e) => {
+                    createDroplets(e.pageX, e.pageY);
+                });
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            const hueStart = 210 + mouseX * 10;
+            const hueEnd = 230 + mouseY * 5;
+            const lightStart = 30 + mouseY * 10;
+            const lightEnd = 25 + mouseX * 10;
+
+            document.body.style.background = `
+                linear-gradient(${130 + mouseX * 20}deg, 
+                hsl(${hueStart}, 60%, ${lightStart}%) 0%, 
+                hsl(${hueEnd}, 60%, ${lightEnd}%) 100%)
+            `;
+            });
+
+
+    </script>
+</body>
+</html>
