@@ -33,10 +33,62 @@
       "categories": ["buttons", "creative", "beta"],
       "status": "Beta",
       "screenshot": "./assets/image/liquid-button.png",
-      "tags": ["按钮", "加载", "交互"],
+      "tags": ["Button", "Creative"],
       "meta": {
         "views": "104",
         "likes": 20
+      }
+    },
+    {
+      "id": "404-page",
+      "name": "404 Page",
+      "icon": "fas fa-film",
+      "categories": ["animation", "creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/404.png",
+      "tags": ["Animation", "404"],
+      "meta": {
+        "views": "81",
+        "likes": 12
+      }
+    },
+    {
+      "id": "among-us",
+      "name": "Among Us",
+      "icon": "fas fa-wand-magic-sparkles",
+      "categories": ["creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/among-us.png",
+      "tags": ["Character", "Game"],
+      "meta": {
+        "views": "412",
+        "likes": 105
+      }
+    },
+    {
+      "id": "background-animation",
+      "name": "Background Animation",
+      "icon": "fas fa-film",
+      "categories": ["animation", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/background-animation.png",
+      "tags": ["Animation", "Background"],
+      "meta": {
+        "views": "52",
+        "likes": 10
+      }
+    },
+    {
+      "id": "black-keyboard",
+      "name": "Black Keyboard",
+      "icon": "fas fa-wand-magic-sparkles",
+      "categories": ["creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/black-keyboard.png",
+      "tags": ["Creative", "Keyboard"],
+      "meta": {
+        "views": "73",
+        "likes": 14
       }
     }
   ]

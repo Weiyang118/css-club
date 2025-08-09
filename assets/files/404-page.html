@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>炫酷科技感跳舞404</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background: #aff0e4;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    .sub-title {
+      font-size: 3rem;
+      color: black;
+      font-family: 'Creepster', cursive;
+      margin-top: 1rem;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .dancer-gif {
+      width: 500px;
+      height: auto;
+      position: relative;
+      z-index: 10;
+      margin: 0 auto;
+    }
+
+    .go-home-btn {
+      margin-top: 2rem;
+      padding: 1rem 3rem;
+      background: linear-gradient(135deg, #00ffe0, #00bfa6);
+      color: black;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border: 2px solid #00d9c0;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #aff0e4, 0 0 30px #87ecda;
+      position: relative;
+      z-index: 10;
+      transition: all 0.3s ease;
+      animation: pulse 2.5s ease-in-out infinite alternate;
+    }
+
+    .go-home-btn::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      background: linear-gradient(45deg, #00ffe0, #00c5ac);
+      border-radius: 50px;
+      z-index: -1;
+      filter: blur(12px);
+      animation: glow 4s linear infinite;
+    }
+
+    .go-home-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 25px #94efdf, 0 0 40px #64e7d6;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.03);
+      }
+    }
+
+    @keyframes glow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="./Looping Page Not Found GIF by STARFACE.gif" class="dancer-gif" />
+  <div class="sub-title">Page Not Found</div>
+
+  <!-- 炫酷但风格统一的 Go Home 按钮 -->
+  <button class="go-home-btn" onclick="location.href='index.html'">Go Home</button>
+
+</body>
+</html>

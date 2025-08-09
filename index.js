@@ -105,7 +105,7 @@ async function showComponentDetail(componentId) {
                     Show Area
                 </h2>
                 <div class="demo-area d-flex justify-content-center align-items-center">
-                    <iframe src="${detail.demo}" frameborder="0" class="demo-iframe" style="width: 100%; min-height: 200px; border-radius: 15px;">
+                    <iframe src="${detail.demo}" frameborder="0" class="demo-iframe" style="width: 100%; height:auto; border-radius: 15px;aspect-ratio: 16/9;">
                     </iframe>
                 </div>
             </div>
@@ -133,13 +133,7 @@ async function showComponentDetail(componentId) {
     document.getElementById('componentDetail').innerHTML = detailHTML;
     document.getElementById('componentsGrid').style.display = 'none';
     document.getElementById('componentDetail').classList.add('active');
-    
-    if (detail.code.js) {
-        const scriptTag = document.createElement('script');
-        scriptTag.id = 'demo-script';
-        scriptTag.textContent = detail.code.js;
-        document.body.appendChild(scriptTag);
-    }
+
     // 重新高亮代码
     if (window.Prism) {
         Prism.highlightAll();

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Keyboard</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+            background-color:#232323;
+        }
+
+        span{
+            position:relative;
+            display:inline-block;
+            width:70px;
+            height:70px;
+            padding:8px 15px;
+            margin:8px 4px;
+            border-radius:10px;
+            background:linear-gradient(100deg,#282828,#202020);
+            overflow:hidden;
+            box-shadow:
+            inset -8px 0 8px rgba(0,0,0,.15),
+            inset 0 -8px 8px rgba(0,0,0,.25),
+            0 0 2px rgba(0,0,0,.75),
+            10px 20px 35px rgba(0,0,0,.45);
+        }
+
+        span::before{
+            content:'';
+            position:absolute;
+            inset:3px 12px 14px 4px;
+            background:linear-gradient(90deg,#232323,#4a4a4a);
+            border-radius:10px;
+            box-shadow:-10px -10px 10px rgba(255,255,255,.25),10px 5px 10px rgba(0,0,0,.15);
+            border:1px solid #0004;
+            border-right:none;
+        }
+
+        span i{
+            position:relative;
+            color:white;
+            font-size:22px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span><i>C</i></span>
+        <span><i>S</i></span>
+        <span><i>S</i></span>
+    </div>
+</body>
+</html>
