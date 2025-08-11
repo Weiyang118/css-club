@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerpoint Logo</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+            background:#fff;
+        }
+
+        .container{
+            position:relative;
+            width:300px;
+            height:300px;
+        }
+
+        .quarter-circle{
+            width:150px;
+            height:150px;
+            position:absolute;
+        }
+
+        .top-left{
+            border-radius:150px 0 0 0;
+            top:0;
+            left:0;
+            background-color:#ed6c47;
+        }
+
+        .top-right{
+            border-radius:0 150px 0 0;
+            top:0;
+            right:0;
+            background-color:#ff8f6b;
+        }
+
+        .bottom-left{
+            border-radius:0 0 0 150px;
+            bottom:0;
+            left:0;
+            background-color:#d35230;
+        }
+
+        .bottom-right{
+            border-radius:0 0 150px 0;
+            bottom:0;
+            right:0;
+            background-color:#d35230;
+        }
+
+        .square{
+            width:150px;
+            height:150px;
+            position:absolute;
+            top:25%;
+            border-radius:15px;
+            background:linear-gradient(180deg,rgba(199,71,36,1)0%,rgba(189,55,24,1));
+            box-shadow:12px 6px 0px -1px #6c2a18,16px -6px 0px -1px rgba(0,0,0,.15), 16px 12px 0px -1px rgba(0,0,0,.3);
+        }
+
+        .square div{
+            color:white;
+            height:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:100px;
+            font-weight:900;
+            font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quarter-circle top-left"></div>
+        <div class="quarter-circle top-right"></div>
+        <div class="quarter-circle bottom-left"></div>
+        <div class="quarter-circle bottom-right"></div>
+        <div class="square">
+            <div>
+                P
+            </div>
+        </div>
+    </div>
+</body>
+</html>

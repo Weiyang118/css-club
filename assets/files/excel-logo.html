@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Logo</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+            background:#fff;
+        }
+
+        .container{
+            width:300px;
+            height:300px;
+            position:relative;
+        }
+
+        .rectangle{
+            width:150px;
+            height:75px;
+            position:absolute;
+        }
+
+        .layer1{
+            top:0;
+            left:0;
+            background-color:#21a366;
+            border-radius:20px 0 0 0;
+        }
+
+        .layer2{
+            top:0;
+            left:50%;
+            background-color:#33c481;
+            border-radius:0 20px 0 0;
+        }
+
+        .layer3{
+            top:25%;
+            left:0;
+            background-color:#107c41;
+        }
+
+        .layer4{
+            top:25%;
+            left:50%;
+            background-color:#21a366;
+        }
+
+        .layer5{
+            top:50%;
+            left:0;
+            background-color:#185c37;
+        }
+
+        .layer6{
+            top:50%;
+            left:50%;
+            background-color:#107c41;
+        }
+
+        .layer7{
+            top:75%;
+            left:0%;
+            background-color:#185c37;
+            border-radius:0 0 0 20px;
+            box-shadow:0px 10px 10px -1px rgba(0,0,0,.3);
+        }
+
+        .layer8{
+            top:75%;
+            left:50%;
+            background-color:#185c37;
+            border-radius:0 0 20px 0;
+            box-shadow:0px 10px 10px -1px rgba(0,0,0,.3);
+        }
+
+        .square{
+            position:absolute;
+            top:25%;
+            left:-15%;
+            background:linear-gradient(180deg,rgb(17,131,70),rgb(13,112,56));
+            width:150px;
+            height:150px;
+            border-radius:15px;
+            box-shadow:5px 5px 10px -1px rgba(0,0,0,.7);
+        }
+
+        .square div{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            height:100%;
+            font-size:100px;
+            font-weight:900;
+            font-family:"Franklin Gothic Medium",'Arial Narrow',Arial,sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rectangle layer1"></div>
+        <div class="rectangle layer2"></div>
+        <div class="rectangle layer3"></div>
+        <div class="rectangle layer4"></div>
+        <div class="rectangle layer5"></div>
+        <div class="rectangle layer6"></div>
+        <div class="rectangle layer7"></div>
+        <div class="rectangle layer8"></div>
+        <div class="square">
+            <div>
+                X
+            </div>
+        </div>
+    </div>
+</body>
+</html>

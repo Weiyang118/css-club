@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>椭圆360度翻转动画</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ellipse {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        /* 不同大小的椭圆 */
+        .ellipse:nth-child(1) {
+            width: 150px;
+            height: 70px;
+            border-color: rgba(255, 100, 150, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 0s;
+            box-shadow:
+                0 0 15px rgba(255, 100, 150, 0.7),
+                0 0 30px rgba(255, 100, 150, 0.5);
+        }
+
+        .ellipse:nth-child(2) {
+            width: 200px;
+            height: 90px;
+            border-color: rgba(100, 200, 255, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 0.3s;
+            box-shadow:
+                0 0 15px rgba(100, 200, 255, 0.7),
+                0 0 30px rgba(100, 200, 255, 0.5);
+        }
+
+        .ellipse:nth-child(3) {
+            width: 250px;
+            height: 110px;
+            border-color: rgba(150, 255, 100, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 0.6s;
+            box-shadow:
+                0 0 15px rgba(150, 255, 100, 0.7),
+                0 0 25px rgba(150, 255, 100, 0.5);
+        }
+
+        .ellipse:nth-child(4) {
+            width: 300px;
+            height: 130px;
+            border-color: rgba(255, 200, 100, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 0.9s;
+            box-shadow:
+                0 0 15px rgba(255, 200, 100, 0.7),
+                0 0 25px rgba(255, 200, 100, 0.5);
+        }
+
+        .ellipse:nth-child(5) {
+            width: 350px;
+            height: 150px;
+            border-color: rgba(200, 100, 255, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 1.2s;
+            box-shadow:
+                0 0 15px rgba(200, 100, 255, 0.7),
+                0 0 25px rgba(200, 100, 255, 0.5);
+        }
+
+        .ellipse:nth-child(6) {
+            width: 400px;
+            height: 170px;
+            border-color: rgba(255, 255, 100, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 1.5s;
+            box-shadow:
+                0 0 15px rgba(255, 255, 100, 0.7),
+                0 0 25px rgba(255, 255, 100, 0.5);
+        }
+
+        .ellipse:nth-child(7) {
+            width: 450px;
+            height: 190px;
+            border-color: rgba(100, 255, 200, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 1.8s;
+            box-shadow:
+                0 0 15px rgba(100, 255, 200, 0.7),
+                0 0 25px rgba(100, 255, 200, 0.5);
+        }
+
+        .ellipse:nth-child(8) {
+            width: 500px;
+            height: 210px;
+            border-color: rgba(255, 150, 200, 0.9);
+            border-width: 4px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 2.1s;
+            box-shadow:
+                0 0 15px rgba(255, 150, 200, 0.7),
+                0 0 25px rgba(255, 150, 200, 0.5);
+        }
+
+        .ellipse:nth-child(9) {
+            width: 550px;
+            height: 230px;
+            border-color: rgba(100, 150, 255, 0.8);
+            border-width: 3px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 2.4s;
+            box-shadow:
+                0 0 12px rgba(100, 150, 255, 0.6),
+                0 0 20px rgba(100, 150, 255, 0.4);
+        }
+
+        .ellipse:nth-child(10) {
+            width: 600px;
+            height: 250px;
+            border-color: rgba(255, 200, 150, 0.8);
+            border-width: 3px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 2.7s;
+            box-shadow:
+                0 0 12px rgba(255, 200, 150, 0.6),
+                0 0 20px rgba(255, 200, 150, 0.4);
+        }
+
+        .ellipse:nth-child(11) {
+            width: 650px;
+            height: 270px;
+            border-color: rgba(150, 255, 200, 0.7);
+            border-width: 3px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 3.0s;
+            box-shadow:
+                0 0 10px rgba(150, 255, 200, 0.5),
+                0 0 18px rgba(150, 255, 200, 0.3);
+        }
+
+        .ellipse:nth-child(12) {
+            width: 700px;
+            height: 290px;
+            border-color: rgba(200, 255, 100, 0.7);
+            border-width: 3px;
+            animation: rotateWithScale 4s linear infinite;
+            animation-delay: 3.3s;
+            box-shadow:
+                0 0 10px rgba(200, 255, 100, 0.5),
+                0 0 18px rgba(200, 255, 100, 0.3);
+        }
+
+        @keyframes rotateWithScale {
+            0% {
+                transform: translateX(-50%) translateY(-50%) rotate(0deg) scale(1) scaleY(1);
+                opacity: 1;
+            }
+            25% {
+                transform: translateX(-50%) translateY(-50%) rotate(90deg) scale(0.8) scaleY(0.3);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateX(-50%) translateY(-50%) rotate(180deg) scale(0.2) scaleY(0.1);
+                opacity: 0.2;
+            }
+            75% {
+                transform: translateX(-50%) translateY(-50%) rotate(270deg) scale(0.8) scaleY(0.3);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(-50%) translateY(-50%) rotate(360deg) scale(1) scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        /* 添加一些额外的视觉效果 */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        /* 背景粒子效果 */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        .particle:nth-child(n+13):nth-child(-n+22) {
+            left: calc(10% + (var(--i, 0) * 8%));
+            animation-delay: calc(var(--i, 0) * 0.5s);
+        }
+
+        @keyframes particleFloat {
+            0% {
+                top: 100vh;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: -10px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+
+        <div class="particle" style="--i: 1;"></div>
+        <div class="particle" style="--i: 2;"></div>
+        <div class="particle" style="--i: 3;"></div>
+        <div class="particle" style="--i: 4;"></div>
+        <div class="particle" style="--i: 5;"></div>
+        <div class="particle" style="--i: 6;"></div>
+        <div class="particle" style="--i: 7;"></div>
+        <div class="particle" style="--i: 8;"></div>
+        <div class="particle" style="--i: 9;"></div>
+        <div class="particle" style="--i: 10;"></div>
+    </div>
+
+    <script>
+        // 添加一些动态效果
+        document.addEventListener('mousemove', (e) => {
+            const ellipses = document.querySelectorAll('.ellipse');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            ellipses.forEach((ellipse, index) => {
+                const offset = (mouseX - 0.5) * 20;
+                const currentRotation = ellipse.style.transform.match(/rotate\(([^)]+)\)/);
+                const rotation = currentRotation ? currentRotation[1] : '0deg';
+                ellipse.style.transform = `translateX(calc(-50% + ${offset}px)) translateY(-50%) rotate(${rotation})`;
+            });
+        });
+    </script>
+</body>
+</html>

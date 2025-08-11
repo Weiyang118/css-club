@@ -105,7 +105,7 @@ async function showComponentDetail(componentId) {
                     Show Area
                 </h2>
                 <div class="demo-area d-flex justify-content-center align-items-center">
-                    <iframe src="${detail.demo}" frameborder="0" class="demo-iframe" style="width: 100%; height:auto; border-radius: 15px;aspect-ratio: 16/9;">
+                    <iframe src="${detail.demo}" frameborder="0" class="demo-iframe" style="width: 100%; height:auto; border-radius: 15px;">
                     </iframe>
                 </div>
             </div>
@@ -121,7 +121,7 @@ async function showComponentDetail(componentId) {
                             ${codeButtons}
                         </div>
                         <button class="copy-btn" onclick="copyCode(this)">
-                            <i class="fas fa-copy me-1"></i>复制
+                            <i class="fas fa-copy me-1"></i>Copy
                         </button>
                     </div>
                     <pre id="code-language"><code class="language-html coding">${detail.code.html.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
@@ -156,6 +156,9 @@ function changeCodeLanguage(language) {
     if (window.Prism) {
         Prism.highlightAll();
     }
+
+    document.querySelector('.copy-btn').textContent = 'Copy';
+    document.querySelector('.copy-btn').style.background = '';
 }
 
 
@@ -174,7 +177,7 @@ function copyCode(button) {
     
     navigator.clipboard.writeText(text).then(() => {
         const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-check me-1"></i>已复制';
+        button.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
         button.style.background = '#28a745';
         
         setTimeout(() => {

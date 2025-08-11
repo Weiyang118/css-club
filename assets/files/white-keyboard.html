@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Keyboard</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+            background:#232323;
+        }
+
+        span{
+            position:relative;
+            display:inline-block;
+            width:70px;
+            height:70px;
+            padding:8px 15px;
+            margin:8px 4px;
+            border-radius:20px;
+            background:linear-gradient(100deg,#e0e0e0,#fff);
+            overflow:hidden;
+            box-shadow:inset -8px 0 8px rgba(150,150,150,.15),inset 0 -8px 8px rgba(190,190,190),0 0 2px rgba(255,255,255,.75),10px 20px 35px rgba(170,170,170,.24);
+        }
+
+        span::before{
+            content:'';
+            position:absolute;
+            inset:6px 14px 14px 8px;
+            background:linear-gradient(135deg,#fff,#e0e0e0);
+            border-radius:20px;
+            box-shadow:-10px -10px 10px rgba(255,255,255,.5), 5px 5px 10px rgba(170,170,170,.85)
+        }
+
+        span i{
+            position:relative;
+            color:black;
+            font-size:28px;
+            font-weight:500;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span><i>C</i></span>
+        <span><i>O</i></span>
+        <span><i>D</i></span>
+        <span><i>I</i></span>
+        <span><i>N</i></span>
+        <span><i>G</i></span>
+    </div>
+</body>
+</html>

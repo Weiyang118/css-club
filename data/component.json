@@ -90,6 +90,123 @@
         "views": "73",
         "likes": 14
       }
+    },
+    {
+      "id": "white-keyboard",
+      "name": "White Keyboard",
+      "icon": "fas fa-wand-magic-sparkles",
+      "categories": ["creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/white-keyboard.png",
+      "tags": ["Creative", "Keyboard"],
+      "meta": {
+        "views": "63",
+        "likes": 11
+      }
+    },
+    {
+      "id": "circle-animation",
+      "name": "Circle Animation",
+      "icon": "fas fa-film",
+      "categories": ["animation", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/circle-animation.png",
+      "tags": ["animation"],
+      "meta": {
+        "views": "92",
+        "likes": 14
+      }
+    },
+    {
+      "id": "excel-logo",
+      "name": "Excel Logo",
+      "icon": "fas fa-lightbulb",
+      "categories": ["logo","creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/excel-logo.png",
+      "tags": ["Logo","Excel"],
+      "meta": {
+        "views": "215",
+        "likes": 62
+      }
+    },
+    {
+      "id": "word-logo",
+      "name": "Word Logo",
+      "icon": "fas fa-lightbulb",
+      "categories": ["logo","creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/word-logo.png",
+      "tags": ["Logo","Word"],
+      "meta": {
+        "views": "245",
+        "likes": 67
+      }
+    },
+    {
+      "id": "ppt-logo",
+      "name": "PPT Logo",
+      "icon": "fas fa-lightbulb",
+      "categories": ["logo","creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/ppt-logo.png",
+      "tags": ["Logo","PowerPoint"],
+      "meta": {
+        "views": "286",
+        "likes": 65
+      }
+    },
+    {
+      "id": "flip-animation",
+      "name": "Flip Animation",
+      "icon": "fas fa-film",
+      "categories": ["animation", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/flip-animation.png",
+      "tags": ["Animation","Interactive"],
+      "meta": {
+        "views": "135",
+        "likes": 32
+      }
+    },
+    {
+      "id": "3D-flip-card",
+      "name": "3D Flip Card",
+      "icon": "fas fa-id-card",
+      "categories": ["cards", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/flip-card.png",
+      "tags": ["3D","Card"],
+      "meta": {
+        "views": "189",
+        "likes": 45
+      }
+    },
+    {
+      "id": "glassmorphism-form",
+      "name": "Glassmorphism Form",
+      "icon": "fas fa-edit",
+      "categories": ["inputs","forms", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/glassmorphism-form.png",
+      "tags": ["Input","Forms","Glassmorphism"],
+      "meta": {
+        "views": "458",
+        "likes": 86
+      }
+    },
+    {
+      "id": "js-typing-effect",
+      "name": "JS Typing Effect",
+      "icon": "fas fa-wand-magic-sparkles",
+      "categories": ["creative","stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/js-typing.png",
+      "tags": ["JS","Typing","Interactive"],
+      "meta": {
+        "views": "352",
+        "likes": 67
+      }
     }
   ]
 }

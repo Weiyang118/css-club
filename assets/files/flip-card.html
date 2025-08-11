@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Card Flip</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+        }
+        .card-grid{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:20px;
+            padding:40px;
+            height:100%;
+        }
+        .card-container{
+            perspective: 1000px;
+            width:160px;
+            height: 220px;
+        }
+        .card{
+            position: relative;
+            width: 100%;
+            height:100%;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.68,-0.55,0.27,1.55);
+        }
+        .card-container:hover .card{
+            transform: rotateY(180deg);
+        }
+        .card-front,.card-back{
+            position: absolute;
+            width:100%;
+            height:100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color:#fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,.15);
+        }
+        .card-front{
+            background: linear-gradient(135deg,#4fafce,#00f2fe);
+        }
+        .card-back{
+            background: linear-gradient(135deg,#f77062,#fe5196);
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-grid">
+        <div class="card-container">
+          <div class="card">
+            <div class="card-front">Card 1</div>
+            <div class="card-back">Content A</div>
+          </div>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <div class="card-front">Card 2</div>
+            <div class="card-back">Content B</div>
+          </div>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <div class="card-front">Card 3</div>
+            <div class="card-back">Content C</div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

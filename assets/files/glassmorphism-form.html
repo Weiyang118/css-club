@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Minimal Glassmorphism Login with Cool Interactions</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body, html {
+    height: 100%;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .glass-card {
+    position: relative;
+    width: 360px;
+    padding: 45px 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      0 8px 32px rgba(255, 255, 255, 0.12),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-card:hover {
+    box-shadow:
+      0 20px 48px rgba(255, 255, 255, 0.20),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-card h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 38px;
+    color: #f0f0f0;
+    letter-spacing: 1.2px;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
+    outline: none;
+    box-shadow:
+      inset 2px 2px 8px rgba(255, 255, 255, 0.25),
+      inset -2px -2px 6px rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  input::placeholder {
+    color: #bbb;
+    transition: color 0.3s ease;
+  }
+  input:focus {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow:
+      inset 4px 4px 14px rgba(255, 255, 255, 0.8),
+      inset -4px -4px 12px rgba(255, 255, 255, 0.3);
+  }
+  input:focus::placeholder {
+    color: transparent;
+  }
+
+  .input-group label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: #bbb;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.3s ease all;
+    user-select: none;
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
+    top: 5px;
+    font-size: 12px;
+    color: #eee;
+  }
+
+  button {
+    width: 100%;
+    padding: 16px 0;
+    border: none;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 8px 18px rgba(255, 255, 255, 0.3),
+      inset 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    filter: blur(15px);
+  }
+
+  button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow:
+      0 12px 30px rgba(255, 255, 255, 0.45),
+      inset 0 0 16px rgba(255, 255, 255, 0.35);
+  }
+
+  button:hover::before {
+    opacity: 1;
+    animation: pulse 1.8s infinite;
+  }
+
+  /* 脉冲光效动画 */
+  @keyframes pulse {
+    0% {
+      transform: translateX(-100%) translateY(-100%) scale(0.8);
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(50%) translateY(50%) scale(1.1);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) scale(0.8);
+      opacity: 0.7;
+    }
+  }
+
+  .forgot-link {
+    margin-top: 22px;
+    text-align: center;
+  }
+
+  .forgot-link a {
+    color: #a0a0a0;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  
+  .forgot-link a:hover {
+    color: #eee;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="glass-card" aria-label="Login form">
+  <h2>Login</h2>
+  <form>
+    <div class="input-group">
+      <input type="text" id="username" placeholder=" " required autocomplete="username" />
+      <label for="username">Username</label>
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" placeholder=" " required autocomplete="current-password" />
+      <label for="password">Password</label>
+    </div>
+    <button type="submit">Sign In</button>
+  </form>
+  <div class="forgot-link">
+    <a href="#">Forgot password?</a>
+  </div>
+</div>
+
+</body>
+</html>
