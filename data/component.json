@@ -214,7 +214,7 @@
       "icon": "fas fa-spinner",
       "categories": ["spinner","stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/liquid-loading.png",
+      "screenshot": "./assets/image/Liquid-loading.png",
       "tags": ["Spinner","Liquid"],
       "meta": {
         "views": "212",
@@ -300,4 +300,5 @@
       }
     }
   ]
+
 }
