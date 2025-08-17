@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neumorphism Login Dark Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1e1e1e;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background: #1e1e1e;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 
+        10px 10px 20px #141414,
+        -10px -10px 20px #282828;
+      width: 320px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 90%;
+      padding:12px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #1e1e1e;
+      box-shadow: inset 5px 5px 10px #141414,
+                  inset -5px -5px 10px #282828;
+      font-size: 14px;
+      color: #ddd;
+      outline: none;
+      font-weight: 700;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #1e1e1e;
+      box-shadow: 5px 5px 10px #141414,
+                  -5px -5px 10px #282828;
+      font-size: 16px;
+      color: #eee;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-weight:700;
+    }
+
+    .login-btn:hover {
+      box-shadow: inset 5px 5px 10px #141414,
+                  inset -5px -5px 10px #282828;
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .login-footer a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Welcome Back</h2>
+    <form>
+      <div class="input-group">
+        <input type="text" placeholder="Username" required>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" required>
+      </div>
+      <button class="login-btn" type="submit">Login</button>
+    </form>
+    <div class="login-footer">
+      <p>Forgot your password? <a href="#">Reset</a></p>
+    </div>
+  </div>
+</body>
+</html>

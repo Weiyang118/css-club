@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marble Radio Buttons with Rolling Ball</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #3e3e3e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+        }
+
+        .radio-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 2;
+        }
+
+        .radio-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .radio-item input[type="radio"] {
+            display: none;
+        }
+
+        .radio-custom {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+            
+            /* Marble background */
+            background: 
+                radial-gradient(circle at 20% 80%, #f8f9fa 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #e9ecef 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #dee2e6 0%, transparent 50%),
+                linear-gradient(135deg, #f1f3f4 0%, #e8eaed 25%, #f8f9fa 50%, #e1e5e9 75%, #f5f5f5 100%);
+            
+            /* Marble veining */
+            background-image: 
+                linear-gradient(45deg, transparent 40%, rgba(108, 117, 125, 0.1) 42%, rgba(108, 117, 125, 0.1) 44%, transparent 46%),
+                linear-gradient(-45deg, transparent 65%, rgba(73, 80, 87, 0.08) 67%, rgba(73, 80, 87, 0.08) 69%, transparent 71%),
+                linear-gradient(25deg, transparent 30%, rgba(134, 142, 150, 0.06) 32%, rgba(134, 142, 150, 0.06) 34%, transparent 36%);
+            
+            border: 2px solid rgba(108, 117, 125, 0.3);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .radio-item input[type="radio"]:checked + .radio-custom {
+            border-color: #495057;
+            background: 
+                radial-gradient(circle at 20% 80%, #f8f9fa 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #e9ecef 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #dee2e6 0%, transparent 50%),
+                linear-gradient(135deg, #e9ecef 0%, #dee2e6 25%, #f1f3f4 50%, #d6d8db 75%, #f0f0f0 100%);
+            
+            box-shadow: 
+                0 6px 12px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 0.9),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+            
+            transform: scale(1.05);
+        }
+
+        .radio-label {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .radio-item:hover .radio-label {
+            color: #f8f9fa;
+        }
+
+        .radio-item input[type="radio"]:checked ~ .radio-label {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Rolling Ball Animation */
+        .rolling-ball {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 30% 30%, #ffffff 0%, #495057 100%);
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 3;
+            left: 26px;
+            top: 25px; 
+            opacity: 0;
+        }
+
+        .rolling-ball.active {
+            opacity: 1;
+        }
+
+        /* Rolling animation keyframes */
+        @keyframes roll {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .rolling-ball.rolling {
+            animation: roll 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Marble shimmer effect */
+        .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .radio-item:hover .radio-custom::after {
+            opacity: 1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .radio-item {
+                padding: 15px;
+            }
+            
+            .radio-custom {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .rolling-ball {
+                width: 14px;
+                height: 14px;
+                left: 22px;
+                top: 27px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your Preference</h2>
+        <div class="radio-group">
+            <div class="rolling-ball active"></div>
+            
+            <label class="radio-item" data-index="0">
+                <input type="radio" name="marble-option" value="low" checked>
+                <span class="radio-custom"></span>
+                <span class="radio-label">Low Quality</span>
+            </label>
+
+            <label class="radio-item" data-index="1">
+                <input type="radio" name="marble-option" value="medium">
+                <span class="radio-custom"></span>
+                <span class="radio-label">Medium Quality</span>
+            </label>
+
+            <label class="radio-item" data-index="2">
+                <input type="radio" name="marble-option" value="high">
+                <span class="radio-custom"></span>
+                <span class="radio-label">High Quality</span>
+            </label>
+
+        </div>
+    </div>
+
+    <script>
+        const radioItems = document.querySelectorAll('.radio-item');
+        const rollingBall = document.querySelector('.rolling-ball');
+        
+        radioItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                // Remove rolling animation class
+                rollingBall.classList.remove('rolling');
+                
+                // Calculate new position
+                const itemHeight = 75; // Height of each radio item including gap
+                const newTop = 25 + (index * itemHeight) + 20*index; // Starting position + offset
+                console.log(newTop)
+                
+                // Add rolling animation
+                rollingBall.classList.add('rolling');
+                
+                // Move the ball to new position
+                rollingBall.style.top = newTop + 'px';
+                
+                // Remove rolling animation after completion
+                setTimeout(() => {
+                    rollingBall.classList.remove('rolling');
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

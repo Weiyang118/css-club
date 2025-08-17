@@ -1,5 +1,25 @@
 let detail = null;
 
+// 鼠标跟随效果
+    const cursorFollower = document.getElementById('cursorFollower');
+    document.addEventListener('mousemove', (e) => {
+        cursorFollower.style.left = e.clientX - 10 + 'px';
+        cursorFollower.style.top = e.clientY - 10 + 'px';
+    });
+
+    // 生成粒子效果
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
 // 搜索功能
 document.getElementById('searchInput').addEventListener('input', function(e) {
     const searchTerm = e.target.value.toLowerCase();
@@ -252,3 +272,4 @@ async function loadComponents() {
 
   // 在页面加载完成后执行
   window.addEventListener('DOMContentLoaded', loadComponents);
+  document.addEventListener('DOMContentLoaded', createParticles());

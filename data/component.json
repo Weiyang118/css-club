@@ -207,6 +207,97 @@
         "views": "352",
         "likes": 67
       }
+    },
+    {
+      "id": "liquid-loading",
+      "name": "Liquid Loading",
+      "icon": "fas fa-spinner",
+      "categories": ["spinner","stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/liquid-loading.png",
+      "tags": ["Spinner","Liquid"],
+      "meta": {
+        "views": "212",
+        "likes": 49
+      }
+    },
+    {
+      "id": "particle-love",
+      "name": "Particle Love",
+      "icon": "fas fa-wand-magic-sparkles",
+      "categories": ["creative","stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/love.png",
+      "tags": ["Love","Particle","Creative"],
+      "meta": {
+        "views": "452",
+        "likes": 65
+      }
+    },
+    {
+      "id": "marble-radio",
+      "name": "Marble Radio",
+      "icon": "fas fa-dot-circle",
+      "categories": ["radio","stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/marble-radio.png",
+      "tags": ["Radio","Marble"],
+      "meta": {
+        "views": "524",
+        "likes": 78
+      }
+    },
+    {
+      "id": "neumorphism-form",
+      "name": "Neumorphism Form",
+      "icon": "fas fa-edit",
+      "categories": ["inputs","forms", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/neumorphism-form.png",
+      "tags": ["Input","Forms","Neumorphism"],
+      "meta": {
+        "views": "325",
+        "likes": 62
+      }
+    },
+    {
+      "id": "nike-card",
+      "name": "Nike Card",
+      "icon": "fas fa-id-card",
+      "categories": ["cards", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/nike-card.png",
+      "tags": ["Card","Nike"],
+      "meta": {
+        "views": "432",
+        "likes": 78
+      }
+    },
+    {
+      "id": "question-emoji",
+      "name": "Question Emoji",
+      "icon": "fas fa-face-smile",
+      "categories": ["emoji","creative", "stable"],
+      "status": "Stable",
+      "screenshot": "./assets/image/question-emoji.png",
+      "tags": ["Emoji","Interactive"],
+      "meta": {
+        "views": "307",
+        "likes": 51
+      }
+    },
+    {
+      "id": "rain",
+      "name": "Rain",
+      "icon": "fas fa-film",
+      "categories": ["animation", "beta"],
+      "status": "Beta",
+      "screenshot": "./assets/image/rain.png",
+      "tags": ["Animation"],
+      "meta": {
+        "views": "127",
+        "likes": 23
+      }
     }
   ]
 }

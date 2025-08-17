@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆形液体加载动画</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #004e92 0%, #000428 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .liquid-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 242, 212, 0.15);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 30px;
+        }
+
+        .liquid {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, 
+                rgba(64, 224, 255, 0.9) 0%, 
+                rgba(0, 191, 255, 0.95) 50%, 
+                rgba(30, 144, 255, 1) 100%);
+            animation: fillUp 6s linear forwards;
+            border-radius: 0 0 50% 50%;
+            height: 0%;
+        }
+
+        .wave-surface {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            overflow: visible;
+        }
+
+        .wave {
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(135, 206, 250, 0.8) 0px,
+                rgba(64, 224, 255, 0.9) 25px,
+                rgba(135, 206, 250, 0.8) 50px
+            );
+            animation: waveMove 3s linear infinite;
+            clip-path: polygon(
+                0% 50%,
+                2% 45%,
+                4% 40%,
+                6% 35%,
+                8% 40%,
+                10% 45%,
+                12% 50%,
+                14% 55%,
+                16% 60%,
+                18% 65%,
+                20% 60%,
+                22% 55%,
+                24% 50%,
+                26% 45%,
+                28% 40%,
+                30% 35%,
+                32% 40%,
+                34% 45%,
+                36% 50%,
+                38% 55%,
+                40% 60%,
+                42% 65%,
+                44% 60%,
+                46% 55%,
+                48% 50%,
+                50% 45%,
+                52% 40%,
+                54% 35%,
+                56% 40%,
+                58% 45%,
+                60% 50%,
+                62% 55%,
+                64% 60%,
+                66% 65%,
+                68% 60%,
+                70% 55%,
+                72% 50%,
+                74% 45%,
+                76% 40%,
+                78% 35%,
+                80% 40%,
+                82% 45%,
+                84% 50%,
+                86% 55%,
+                88% 60%,
+                90% 65%,
+                92% 60%,
+                94% 55%,
+                96% 50%,
+                98% 45%,
+                100% 40%,
+                100% 100%,
+                0% 100%
+            );
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -1s;
+            opacity: 0.7;
+            clip-path: polygon(
+                0% 60%,
+                2% 55%,
+                4% 50%,
+                6% 45%,
+                8% 50%,
+                10% 55%,
+                12% 60%,
+                14% 65%,
+                16% 70%,
+                18% 75%,
+                20% 70%,
+                22% 65%,
+                24% 60%,
+                26% 55%,
+                28% 50%,
+                30% 45%,
+                32% 50%,
+                34% 55%,
+                36% 60%,
+                38% 65%,
+                40% 70%,
+                42% 75%,
+                44% 70%,
+                46% 65%,
+                48% 60%,
+                50% 55%,
+                52% 50%,
+                54% 45%,
+                56% 50%,
+                58% 55%,
+                60% 60%,
+                62% 65%,
+                64% 70%,
+                66% 75%,
+                68% 70%,
+                70% 65%,
+                72% 60%,
+                74% 55%,
+                76% 50%,
+                78% 45%,
+                80% 50%,
+                82% 55%,
+                84% 60%,
+                86% 65%,
+                88% 70%,
+                90% 75%,
+                92% 70%,
+                94% 65%,
+                96% 60%,
+                98% 55%,
+                100% 50%,
+                100% 100%,
+                0% 100%
+            );
+        }
+
+        @keyframes fillUp {
+            0% {
+                height: 0%;
+            }
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes waveMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00fff7;
+            text-shadow: 0 0 10px #00fff7;
+            font-size: 32px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .title {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00f260, #0575e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .reset-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 107, 107, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Liquid Loading Animation</h1>
+        <div class="liquid-container">
+            <div class="liquid">
+                <div class="wave-surface">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+            <div class="percentage" id="percentage">0%</div>
+        </div>
+    </div>
+
+    <script>
+        function updatePercentage() {
+            const percentage = document.getElementById('percentage');
+            let count = 0;
+            const duration = 6000;
+            const interval = duration / 100;
+
+            const timer = setInterval(() => {
+                count++;
+                percentage.textContent = count + '%';
+                
+                if (count >= 100) {
+                    clearInterval(timer);
+                }
+            }, interval);
+        }
+
+        function restartAnimation() {
+            const liquid = document.querySelector('.liquid');
+            liquid.style.animation = 'none';
+            liquid.offsetHeight; 
+            liquid.style.animation = 'fillUp 6s ease-out forwards';
+
+            const percentage = document.getElementById('percentage');
+            percentage.textContent = '0%';
+            updatePercentage();
+        }
+
+        window.addEventListener('load', () => {
+            updatePercentage();
+        });
+    </script>
+</body>
+</html>
