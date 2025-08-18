@@ -17,7 +17,7 @@
       "id": "effects-slider-particles",
       "name": "Effects Slider Particles",
       "icon": "fas fa-icons",
-      "categories": ["Slider", "popular", "beta"],
+      "categories": ["slider", "popular", "beta"],
       "status": "Stable",
       "screenshot": "./assets/image/particle-slider.png",
       "tags": ["Slider", "Interactive"],

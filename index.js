@@ -177,7 +177,7 @@ function changeCodeLanguage(language) {
         Prism.highlightAll();
     }
 
-    document.querySelector('.copy-btn').textContent = 'Copy';
+    document.querySelector('.copy-btn').innerHTML = '<i class="fas fa-copy me-1"></i>Copy';
     document.querySelector('.copy-btn').style.background = '';
 }
 
@@ -232,6 +232,11 @@ async function loadComponents() {
 
       document.querySelector('#componentsGrid').innerHTML = '';
 
+      // 先预加载所有图片
+      await Promise.all(
+        data.components.map(c => preloadImage(c.screenshot))
+      );
+
       // 渲染每个组件（示例）
       data.components.forEach(component => {
         renderComponentCard(component);
@@ -241,7 +246,17 @@ async function loadComponents() {
     }
   }
 
-  function renderComponentCard(component) {
+  // 预加载图片函数
+function preloadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = resolve;
+    img.onerror = reject;
+  });
+}
+
+function renderComponentCard(component) {
     const card = document.createElement('div');
     card.className = 'component-card';
     card.setAttribute('data-category', component.categories.join(' '));
