@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墙壁开关按钮</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .switch-container {
+            position: relative;
+            width: min(300px, 80vw);
+            height: min(400px, 60vh);
+            max-width: 300px;
+            max-height: 400px;
+            aspect-ratio: 3/4;
+        }
+
+        .switch-plate {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%);
+            border-radius: 15%;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .screw {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle at 30% 30%, #d0d0d0, #a8a8a8);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .screw::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 1.5px;
+            background: linear-gradient(90deg, #999, #666);
+            transform: translate(-50%, -50%);
+            border-radius: 1px;
+            box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.4);
+        }
+
+        .screw.top {
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .screw.bottom {
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .switch-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45%;
+            height: 55%;
+            background: linear-gradient(145deg, #f2f2f2 0%, #e0e0e0 100%);
+            border-radius: 8px;
+            box-shadow: 
+                inset 0 3px 6px rgba(0, 0, 0, 0.2),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.8),
+                0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 6px;
+        }
+
+        .switch-button {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 6px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .switch-half {
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 30%, #e8e8e8 70%, #d8d8d8 100%);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            border: none;
+        }
+
+        .switch-half.top {
+            border-radius: 6px 6px 0px 0px;
+        }
+
+        .switch-half.bottom {
+            border-radius: 0px 0px 6px 6px;
+        }
+
+        .switch-button.off .switch-half.top::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96%;
+            height: 1px;
+            background: #FFFFFF;
+            z-index: 2;
+        }
+
+        .switch-button.off .switch-half.bottom::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96%;
+            height: 1px;
+            background: #FFFFFF;
+            z-index: 2;
+        }
+
+        .switch-button.off .switch-half.top {
+            box-shadow: 
+                inset 0 4px 2px rgba(255, 255, 255, 0.8),
+                inset 2px 0px rgba(0, 0, 0, 0.8),
+                inset -2px 0px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(180deg, #F6F6F6 0%, #ECECEC 100%);
+        }
+
+        .switch-button.off .switch-half.bottom {
+            box-shadow: 
+                inset 2px 0px rgba(0, 0, 0, 0.8),
+                inset -2px 0px  rgba(0, 0, 0, 0.8),
+                inset 0px -10px #7B7B7B,
+                20px 15px 20px 5px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(180deg, #F7F7F7 0%, #f8f8f8 100%);
+        }
+        
+        .switch-button.on .switch-half.top {
+            box-shadow: 
+                inset 2px 0px rgba(0, 0, 0, 0.8),
+                inset -2px 0px  rgba(0, 0, 0, 0.8),
+                inset 0px 10px #ffffff;
+            background: linear-gradient(180deg, #dedede 0%, #dbdbdb 100%);
+        }
+
+        .switch-button.on .switch-half.bottom {
+            box-shadow: 
+                inset 0 -4px 2px #7b7b7b,
+                inset 2px 0px rgba(0, 0, 0, 0.8),
+                inset -2px 0px rgba(0, 0, 0, 0.8),
+                20px 15px 20px 5px rgba(0, 0, 0, 0.25);
+            background: #dbdbdb;
+        }
+
+        .switch-button.on .switch-half.top::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96%;
+            height: 1px;
+            background: #efefef;
+            z-index: 2;
+        }
+
+        .switch-button.on .switch-half.bottom::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96%;
+            height: 1px;
+            background: #eeeeee;
+            z-index: 2;
+        }
+
+        .switch-half {
+            transition: all 0.3s ease;
+        }
+
+        .switch-button:active .switch-half {
+            transition: all 0.1s ease;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .status-indicator.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .switch-container {
+                width: min(250px, 70vw);
+                height: min(320px, 50vh);
+            }
+            
+            .screw {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .screw::after {
+                width: 6px;
+                height: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="switch-container">
+        <div class="switch-plate" onclick="toggleSwitch()">
+            <div class="screw top"></div>
+            <div class="screw bottom"></div>
+            <div class="switch-frame">
+                <div class="switch-button off" id="switchButton">
+                    <div class="switch-half top"></div>
+                    <div class="switch-half bottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="status-indicator" id="statusIndicator">Close</div>
+    </div>
+
+    <script>
+        let isOn = false;
+        
+        function toggleSwitch() {
+            const button = document.getElementById('switchButton');
+            const indicator = document.getElementById('statusIndicator');
+            
+            isOn = !isOn;
+            
+            if (isOn) {
+                button.className = 'switch-button on';
+                indicator.textContent = 'Open';
+                document.body.style.background = 'linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%)';
+            } else {
+                button.className = 'switch-button off';
+                indicator.textContent = 'Close';
+                document.body.style.background = '#000';
+            }
+            
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 1500);
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                event.preventDefault();
+                toggleSwitch();
+            }
+        });
+        
+        let touchStarted = false;
+        
+        document.querySelector('.switch-plate').addEventListener('touchstart', function(e) {
+            touchStarted = true;
+            e.preventDefault();
+        });
+        
+        document.querySelector('.switch-plate').addEventListener('touchend', function(e) {
+            if (touchStarted) {
+                toggleSwitch();
+                touchStarted = false;
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

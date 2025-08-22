@@ -298,6 +298,19 @@
         "views": "127",
         "likes": 23
       }
+    },
+    {
+      "id": "light-switch",
+      "name": "Light Switch",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons","switch", "beta"],
+      "status": "Beta",
+      "screenshot": "./assets/image/light-switch.png",
+      "tags": ["Button","Switch", "Interactive"],
+      "meta": {
+        "views": "427",
+        "likes": 56
+      }
     }
   ]
 }
