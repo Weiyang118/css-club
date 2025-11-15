@@ -1,0 +1,56 @@
+# ===========================
+# robots.txt for yourdomain.com
+# Protect sensitive areas while allowing SEO-friendly pages
+# ===========================
+
+# ---------------------------
+# Block all crawlers from sensitive areas
+# ---------------------------
+User-agent: *
+Disallow: /admin/
+Disallow: /config/
+Disallow: /private/
+Disallow: /backup/
+Disallow: /temp/
+Disallow: /cgi-bin/
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.env$
+Disallow: /*.bak$
+Disallow: /*.zip$
+Disallow: /*.tar.gz$
+Disallow: /*.tgz$
+
+# ---------------------------
+# Block specific bots that are known for aggressive crawling
+# ---------------------------
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# ---------------------------
+# Allow search engines to crawl important content
+# ---------------------------
+User-agent: *
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /blog/
+Allow: /products/
+Allow: /public/
+
+# ---------------------------
+# Sitemap location
+# ---------------------------
+Sitemap: https://www.css-club.com/sitemap.xml
