@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/components", "destination": "/components/index.html" },
+    { "source": "/components/", "destination": "/components/index.html" }
+  ]
+}
