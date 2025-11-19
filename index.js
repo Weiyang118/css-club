@@ -75,7 +75,7 @@ document.querySelectorAll('.sidebar .nav-link').forEach(link => {
 
 async function getComponentDetails(key) {
     try {
-        const response = await fetch('./data/componentDetails.json');
+        const response = await fetch('../data/componentDetails.json');
         if (!response.ok) {
             throw new Error('网络响应失败');
         }
@@ -91,6 +91,7 @@ async function getComponentDetails(key) {
         return null;
     }
 }
+
 // 显示组件详情
 async function showComponentDetail(componentId) {
     document.getElementById('componentDetail').innerHTML = '';
@@ -104,6 +105,43 @@ async function showComponentDetail(componentId) {
         const langName = lang.toUpperCase();
         return `<button class="code-title" onclick="changeCodeLanguage('${lang}')">${langName}</button>`;
     }).join('');
+
+    // 1. 判断是否有 code
+let codeSectionHTML = '';
+let download_button = '';
+
+    if (detail.code && detail.code.html) {
+        // 有 code → 显示 Code Example
+        codeSectionHTML = `
+            <div class="code-section">
+                <h2 class="section-title">
+                    <i class="fas fa-code"></i>
+                    Code Example
+                </h2>
+                <div class="code-block">
+                    <div class="code-header d-flex justify-content-between align-items-center">
+                        <div>${codeButtons}</div>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy me-1"></i>Copy
+                        </button>
+                    </div>
+                    <pre id="code-language"><code class="language-html coding">
+                        ${detail.code.html.replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+                    </code></pre>
+                </div>
+            </div>
+        `;
+    } else {
+            // 无 code → 显示模板下载按钮
+            download_button = `
+                <div class="template-section">
+                    <a href="${detail.template}" download class="download-template-btn">
+                        <i class="fas fa-download me-2"></i> Download Template
+                    </a>
+                </div>
+            `;
+        }
+
 
     const detailHTML = `
         <div class="detail-header">
@@ -120,33 +158,19 @@ async function showComponentDetail(componentId) {
 
         <div class="detail-content">
             <div class="demo-section">
-                <h2 class="section-title">
-                    <i class="fas fa-eye"></i>
-                    Show Area
-                </h2>
+                    <div class="section-title">
+                        <div>
+                            <i class="fas fa-eye"></i>
+                            Show Area                     
+                        </div>
+                        ${download_button}
+                    </div>
                 <div class="demo-area d-flex justify-content-center align-items-center">
                     <iframe src="${detail.demo}" frameborder="0" class="demo-iframe" style="width: 100%; height:auto; border-radius: 15px;">
                     </iframe>
                 </div>
             </div>
-
-            <div class="code-section">
-                <h2 class="section-title">
-                    <i class="fas fa-code"></i>
-                    Code Example
-                </h2>
-                <div class="code-block">
-                    <div class="code-header d-flex justify-content-between align-items-center">
-                        <div> 
-                            ${codeButtons}
-                        </div>
-                        <button class="copy-btn" onclick="copyCode(this)">
-                            <i class="fas fa-copy me-1"></i>Copy
-                        </button>
-                    </div>
-                    <pre id="code-language"><code class="language-html coding">${detail.code.html.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
-                </div>
-            </div>
+            ${codeSectionHTML}
         </div>
     `;
 
@@ -226,25 +250,28 @@ document.getElementById('sidebar').addEventListener('click', function(e) {
 
 async function loadComponents() {
     try {
-      const response = await fetch('./data/component.json'); // 或者 '/data/components.json'
+      const response = await fetch('../data/component.json'); // 或者 '/data/components.json'
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
 
       document.querySelector('#componentsGrid').innerHTML = '';
 
+      const shuffledComponents = shuffleArray(data.components);
+      updateNavCounts(data.components);
+
       // 先预加载所有图片
       await Promise.all(
-        data.components.map(c => preloadImage(c.screenshot))
-      );
+        shuffledComponents.map(c => preloadImage(c.screenshot))
+    );
 
-      // 渲染每个组件（示例）
-      data.components.forEach(component => {
-        renderComponentCard(component);
-      });
+    shuffledComponents.forEach(component => {
+      renderComponentCard(component);
+    });
+
     } catch (error) {
       console.error('Failed to load components:', error);
     }
-  }
+}
 
   // 预加载图片函数
 function preloadImage(src) {
@@ -254,6 +281,38 @@ function preloadImage(src) {
     img.onload = resolve;
     img.onerror = reject;
   });
+}
+
+function updateNavCounts(components) {
+    const navItems = document.querySelectorAll('.nav-link');
+
+    navItems.forEach(item => {
+        const category = item.dataset.category;
+        const countSpan = item.querySelector('.nav-count');
+
+        let count = 0;
+
+        if (category === "all") {
+            count = components.length;
+        } else {
+            count = components.filter(c => 
+                c.categories && c.categories.includes(category)
+            ).length;
+        }
+
+        if (countSpan) {
+            countSpan.textContent = count;
+        }
+    });
+}
+
+function shuffleArray(array) {
+  const arr = [...array]; // 避免修改原数组
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
 function renderComponentCard(component) {
@@ -288,3 +347,14 @@ function renderComponentCard(component) {
   // 在页面加载完成后执行
   window.addEventListener('DOMContentLoaded', loadComponents);
   document.addEventListener('DOMContentLoaded', createParticles());
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = scrollTop / docHeight * 100;
+
+  document.documentElement.style.setProperty(
+    "--scroll-fill",
+    `${percent}%`
+  );
+});
