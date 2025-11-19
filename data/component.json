@@ -6,7 +6,7 @@
       "icon": "fas fa-hand-pointer",
       "categories": ["buttons", "popular", "stable"],
       "status": "stable",
-      "screenshot": "./assets/image/round-button.png",
+      "screenshot": "../assets/image/round-button.png",
       "tags": ["Button", "Basic"],
       "meta": {
         "views": "15",
@@ -18,8 +18,8 @@
       "name": "Effects Slider Particles",
       "icon": "fas fa-icons",
       "categories": ["slider", "popular", "beta"],
-      "status": "Stable",
-      "screenshot": "./assets/image/particle-slider.png",
+      "status": "Beta",
+      "screenshot": "../assets/image/particle-slider.png",
       "tags": ["Slider", "Interactive"],
       "meta": {
         "views": "12",
@@ -32,7 +32,7 @@
       "icon": "fas fa-hand-pointer",
       "categories": ["buttons", "creative", "beta"],
       "status": "Beta",
-      "screenshot": "./assets/image/liquid-button.png",
+      "screenshot": "../assets/image/liquid-button.png",
       "tags": ["Button", "Creative"],
       "meta": {
         "views": "104",
@@ -45,7 +45,7 @@
       "icon": "fas fa-film",
       "categories": ["animation", "creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/404.png",
+      "screenshot": "../assets/image/404.png",
       "tags": ["Animation", "404"],
       "meta": {
         "views": "81",
@@ -58,7 +58,7 @@
       "icon": "fas fa-wand-magic-sparkles",
       "categories": ["creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/among-us.png",
+      "screenshot": "../assets/image/among-us.png",
       "tags": ["Character", "Game"],
       "meta": {
         "views": "412",
@@ -71,7 +71,7 @@
       "icon": "fas fa-film",
       "categories": ["animation", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/background-animation.png",
+      "screenshot": "../assets/image/background-animation.png",
       "tags": ["Animation", "Background"],
       "meta": {
         "views": "52",
@@ -84,7 +84,7 @@
       "icon": "fas fa-wand-magic-sparkles",
       "categories": ["creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/black-keyboard.png",
+      "screenshot": "../assets/image/black-keyboard.png",
       "tags": ["Creative", "Keyboard"],
       "meta": {
         "views": "73",
@@ -97,7 +97,7 @@
       "icon": "fas fa-wand-magic-sparkles",
       "categories": ["creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/white-keyboard.png",
+      "screenshot": "../assets/image/white-keyboard.png",
       "tags": ["Creative", "Keyboard"],
       "meta": {
         "views": "63",
@@ -110,7 +110,7 @@
       "icon": "fas fa-film",
       "categories": ["animation", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/circle-animation.png",
+      "screenshot": "../assets/image/circle-animation.png",
       "tags": ["animation"],
       "meta": {
         "views": "92",
@@ -123,7 +123,7 @@
       "icon": "fas fa-lightbulb",
       "categories": ["logo","creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/excel-logo.png",
+      "screenshot": "../assets/image/excel-logo.png",
       "tags": ["Logo","Excel"],
       "meta": {
         "views": "215",
@@ -136,7 +136,7 @@
       "icon": "fas fa-lightbulb",
       "categories": ["logo","creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/word-logo.png",
+      "screenshot": "../assets/image/word-logo.png",
       "tags": ["Logo","Word"],
       "meta": {
         "views": "245",
@@ -149,7 +149,7 @@
       "icon": "fas fa-lightbulb",
       "categories": ["logo","creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/ppt-logo.png",
+      "screenshot": "../assets/image/ppt-logo.png",
       "tags": ["Logo","PowerPoint"],
       "meta": {
         "views": "286",
@@ -162,7 +162,7 @@
       "icon": "fas fa-film",
       "categories": ["animation", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/flip-animation.png",
+      "screenshot": "../assets/image/flip-animation.png",
       "tags": ["Animation","Interactive"],
       "meta": {
         "views": "135",
@@ -175,7 +175,7 @@
       "icon": "fas fa-id-card",
       "categories": ["cards", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/flip-card.png",
+      "screenshot": "../assets/image/flip-card.png",
       "tags": ["3D","Card"],
       "meta": {
         "views": "189",
@@ -188,7 +188,7 @@
       "icon": "fas fa-edit",
       "categories": ["inputs","forms", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/glassmorphism-form.png",
+      "screenshot": "../assets/image/glassmorphism-form.png",
       "tags": ["Input","Forms","Glassmorphism"],
       "meta": {
         "views": "458",
@@ -201,7 +201,7 @@
       "icon": "fas fa-wand-magic-sparkles",
       "categories": ["creative","stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/js-typing.png",
+      "screenshot": "../assets/image/js-typing.png",
       "tags": ["JS","Typing","Interactive"],
       "meta": {
         "views": "352",
@@ -214,7 +214,7 @@
       "icon": "fas fa-spinner",
       "categories": ["spinner","stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/Liquid-loading.png",
+      "screenshot": "../assets/image/Liquid-loading.png",
       "tags": ["Spinner","Liquid"],
       "meta": {
         "views": "212",
@@ -227,7 +227,7 @@
       "icon": "fas fa-wand-magic-sparkles",
       "categories": ["creative","stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/love.png",
+      "screenshot": "../assets/image/love.png",
       "tags": ["Love","Particle","Creative"],
       "meta": {
         "views": "452",
@@ -240,7 +240,7 @@
       "icon": "fas fa-dot-circle",
       "categories": ["radio","stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/marble-radio.png",
+      "screenshot": "../assets/image/marble-radio.png",
       "tags": ["Radio","Marble"],
       "meta": {
         "views": "524",
@@ -253,7 +253,7 @@
       "icon": "fas fa-edit",
       "categories": ["inputs","forms", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/neumorphism-form.png",
+      "screenshot": "../assets/image/neumorphism-form.png",
       "tags": ["Input","Forms","Neumorphism"],
       "meta": {
         "views": "325",
@@ -266,7 +266,7 @@
       "icon": "fas fa-id-card",
       "categories": ["cards", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/nike-card.png",
+      "screenshot": "../assets/image/nike-card.png",
       "tags": ["Card","Nike"],
       "meta": {
         "views": "432",
@@ -279,7 +279,7 @@
       "icon": "fas fa-face-smile",
       "categories": ["emoji","creative", "stable"],
       "status": "Stable",
-      "screenshot": "./assets/image/question-emoji.png",
+      "screenshot": "../assets/image/question-emoji.png",
       "tags": ["Emoji","Interactive"],
       "meta": {
         "views": "307",
@@ -292,7 +292,7 @@
       "icon": "fas fa-film",
       "categories": ["animation", "beta"],
       "status": "Beta",
-      "screenshot": "./assets/image/rain.png",
+      "screenshot": "../assets/image/rain.png",
       "tags": ["Animation"],
       "meta": {
         "views": "127",
@@ -305,11 +305,115 @@
       "icon": "fas fa-hand-pointer",
       "categories": ["buttons","switch", "beta"],
       "status": "Beta",
-      "screenshot": "./assets/image/light-switch.png",
+      "screenshot": "../assets/image/light-switch.png",
       "tags": ["Button","Switch", "Interactive"],
       "meta": {
         "views": "427",
         "likes": 56
+      }
+    },
+    {
+      "id": "watch-template",
+      "name": "Watch Template",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["template", "beta"],
+      "status": "Beta",
+      "screenshot": "../assets/image/light-switch.png",
+      "tags": ["Template","Responsive"],
+      "meta": {
+        "views": "697",
+        "likes": 92
+      }
+    },
+    {
+      "id": "back-to-top",
+      "name": "Back To Top",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/back-to-top.png",
+      "tags": ["Button","Back"],
+      "meta": {
+        "views": "127",
+        "likes": 34
+      }
+    },
+    {
+      "id": "explore1",
+      "name": "Explore Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/explore.png",
+      "tags": ["Button","Explore"],
+      "meta": {
+        "views": "234",
+        "likes": 48
+      }
+    },
+    {
+      "id": "explore2",
+      "name": "Explore Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/explore2.png",
+      "tags": ["Button","Explore"],
+      "meta": {
+        "views": "214",
+        "likes": 38
+      }
+    },
+    {
+      "id": "jelly-button",
+      "name": "Jelly Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "animation","stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/jelly-button.png",
+      "tags": ["Button","Jelly","Animation"],
+      "meta": {
+        "views": "354",
+        "likes": 62
+      }
+    },
+    {
+      "id": "twist-button",
+      "name": "Twist Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons", "animation","stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/twist-button.png",
+      "tags": ["Button","Twist","Animation"],
+      "meta": {
+        "views": "154",
+        "likes": 25
+      }
+    },
+    {
+      "id": "next-button",
+      "name": "Next Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons","stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/next-button.png",
+      "tags": ["Button","Next","Animation"],
+      "meta": {
+        "views": "225",
+        "likes": 36
+      }
+    },
+    {
+      "id": "send-button",
+      "name": "Send Button",
+      "icon": "fas fa-hand-pointer",
+      "categories": ["buttons","stable"],
+      "status": "Stable",
+      "screenshot": "../assets/image/send-button.png",
+      "tags": ["Button","Send","Animation"],
+      "meta": {
+        "views": "374",
+        "likes": 58
       }
     }
   ]
