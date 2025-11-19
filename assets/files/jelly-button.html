@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f0f0f0;
+    }
+    button{
+        position: relative;
+        background-color: rgb(151, 95, 255);
+        color: white;
+        border: none;
+        width:300px;
+        height:100px;
+        padding: 15px 30px;
+        font-size: 36px;
+        border-radius: 48px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+        overflow: hidden;
+        font-weight: 700;
+        box-shadow: 0px 10px 10px rgb(210, 187, 253) inset,
+                    0px 5px 10px rgba(5, 5, 5, 0.212),
+                    0px -10px 10px rgb(124, 54, 255) inset;
+    }
+
+    button::before {
+        width: 70%;
+        height: 2px;
+        position: absolute;
+        background-color: rgba(250, 250, 250, 0.678);
+        content: "";
+        filter: blur(1px);
+        top: 7px;
+        border-radius: 50%;
+    }
+
+    button::after {
+        width: 70%;
+        height: 2px;
+        position: absolute;
+        background-color: rgba(250, 250, 250, 0.137);
+        content: "";
+        filter: blur(1px);
+        bottom: 7px;
+        border-radius: 50%;
+    }
+
+    button:hover{
+        animation: btn-hover-bounce 1s ease-out;
+    }
+
+    @keyframes btn-hover-bounce{
+        0%   { transform: scale(1, 1); }
+        15%  { transform: scale(1.25, 0.70); }  /* 压扁 */
+        30%  { transform: scale(0.75, 1.25); }  /* 拉长 */
+        45%  { transform: scale(1.15, 0.85); }  /* 回弹 */
+        60%  { transform: scale(0.9, 1.1); }    /* 再抖一下 */
+        75%  { transform: scale(1.05, 0.95); }  /* 余震 */
+        85%  { transform: scale(0.97, 1.03); }  /* 更细的余震 */
+        100% { transform: scale(1, 1); }        /* 回归正常 */
+    }
+</style>
+<body>
+    <div>
+        <button>
+            Jelly Button
+        </button>
+    </div>
+</body>
+</html>

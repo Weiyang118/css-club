@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    button {
+        position: relative;
+        background-color: #00ff2a;
+        color: black;
+        border: none;
+        width:300px;
+        height:100px;
+        padding: 15px 30px;
+        font-size: 36px;
+        border-radius: 48px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+        font-weight: 700;
+        overflow:hidden;
+    }
+
+    button .icon-container{
+        position:absolute;
+        left:10%;
+        background-color: white;
+        width:75px;
+        height:75px;
+        border-radius:50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow:hidden;
+    }
+
+    button .icon{
+        position:relative;
+        transform:rotateZ(-45deg);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    button .icon .first{
+        transform: translateX(-100px);
+    }
+
+    button .icon .second{
+        transform: translateX(-80%);
+    }
+
+    button .icon i{
+        color:black;
+        transition: all 0.2s ease;
+    }
+
+    button .text{
+        position:absolute;
+        left:65%;
+        top:50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:100%;
+        transition: all 0.4s ease;
+    }
+
+    button .fa-arrow-right{
+        margin-left: 10px;
+        transition: all 0.4s ease;
+    }
+
+    button:hover{
+        background-color: black;
+        color:#00ff2a
+    }
+
+    button:hover .icon .first{
+        transform: translateX(50%);
+    }
+
+    button:hover .icon .second{
+        transform: translateX(100px);
+    }
+
+</style>
+<body>
+    <div>
+        <button>
+            <div class="icon-container">
+                <div class="icon">
+                    <i class="fa-solid fa-arrow-right first"></i>
+                    <i class="fa-solid fa-arrow-right second"></i>
+                </div>
+            </div>
+            <div class="text">Explore</div>
+        </button>
+    </div>
+</body>
+</html>

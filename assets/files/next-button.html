@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    button{
+        position: relative;
+        background-color: #3587df;
+        color: white;
+        border: none;
+        width:300px;
+        height:100px;
+        padding: 15px 30px;
+        font-size: 48px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+        overflow: hidden;
+        font-weight: 700;
+        transform: skewX(-20deg);
+        box-shadow: 10px 10px rgba(0,0,0);
+    }
+
+    button span{
+        transform: skewX(20deg);
+        transition: all 0.4s ease;
+    }
+
+    button .icon{
+        position:relative;
+        width:60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    button .icon i{
+        position: absolute;
+        left:100%;
+        transform: translateX(-50%);
+        transition: all 0.4s ease;
+    }
+
+    button:hover .icon i{
+        animation: color 1s infinite;
+    }
+
+    @keyframes color{
+        0%{color: white;}
+        50%{color: #ffcc00;}
+        100%{color: white;}
+    }
+
+    button:hover .icon i:nth-child(1) {left:50%;animation-delay:0.2s}
+    button:hover .icon i:nth-child(2) {left:75%;animation-delay:0.4s}
+    button:hover .icon i:nth-child(3) {left:100%;animation-delay:0.6s}
+
+    button i{
+        margin-left: 8px;
+    }
+
+    button:hover span{
+        margin-right:30px;
+        transition: all 0.4s ease;
+    }
+
+    button:hover{
+        background-color: #0056b3;
+        transform: scaleX(1.3) skewX(-20deg);
+        box-shadow: 10px 10px #ffcc00;
+    }
+</style>
+<body>
+    <div>
+        <button>
+            <span>Next</span>
+
+            <div class="icon">
+                <i class="fa-solid fa-angle-right"></i>
+                <i class="fa-solid fa-angle-right"></i>
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+        </button>
+    </div>
+</body>
+</html>
